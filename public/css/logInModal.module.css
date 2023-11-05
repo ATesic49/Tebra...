@@ -1,0 +1,48 @@
+.not {
+  display: none;
+}
+.yes {
+  position: fixed;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  padding: 2.5rem 3rem;
+  transform: translate(-50%, -50%);
+  z-index: 200;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.7;
+  z-index: 100;
+}
+.overlay:has(.not) {
+  display: none;
+}
+
+.yes button[type="submit"] {
+  z-index: 2;
+  position: relative;
+  overflow: hidden;
+}
+.yes button[type="submit"]::after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  background-color: var(--primary-color);
+  left: 50%;
+  width: 0px;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  transition: 0.5s;
+}
+.yes button[type="submit"]:focus::after {
+  width: 150%;
+}

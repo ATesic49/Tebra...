@@ -1,0 +1,193 @@
+.swiper {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.swiper img {
+  width: 100%;
+  height: 80vh;
+  min-height: 200px;
+  object-fit: cover;
+  object-position: 0 top;
+  z-index: -2;
+  height: auto;
+  filter: brightness(0.7);
+}
+.slide {
+  width: 100%;
+  height: 90vh;
+  position: relative;
+}
+
+.slide .textContainer {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  gap: 3rem;
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translate(0%, -50%);
+  align-items: flex-end;
+}
+.slide .textContainer > button {
+  background-color: var(--third-color);
+  padding: 0.5rem 2rem;
+  position: relative;
+  color: white;
+  overflow: hidden;
+  z-index: 0;
+  margin-right: 2rem;
+  border-radius: 0.5rem 0;
+}
+
+.slide .textContainer > button ::after {
+  isolation: isolate;
+  content: "";
+  position: absolute;
+  padding: 2px;
+  width: 10%;
+  aspect-ratio: 1;
+  top: -100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 100%;
+  background-color: var(--third-color);
+  z-index: -1;
+}
+
+.slide .textContainer > .yes {
+  overflow: visible;
+}
+.slide .textContainer > .yes ::after {
+  position: absolute;
+  top: -100%;
+  animation: animation 0.5s forwards;
+}
+.slide .text {
+  font-size: var(--font-size-mid);
+  font-weight: 400;
+  color: white;
+}
+
+/* .swiper h1 {
+  font-size: var(--font-size-Xlarge);
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  align-self: flex-start;
+  min-width: 600px !important;
+  width: 70%;
+  text-align: center;
+  color: #ffffff00;
+  transition: 1s ease-in forwards;
+  transform: translate(-50%, -50%);
+  font-weight: 400;
+  z-index: 2;
+  animation: opacity 0.75s 1s forwards;
+}
+.swiper h1::after {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  content: "Tebra";
+  /* opacity: 0.8; */
+
+/* .swiper span {
+  background-color: red;
+  position: absolute;
+  width: 100%;
+} */
+
+/* .swiper a {
+  font-size: var(--font-size-mid);
+  padding: 2vh;
+  position: absolute;
+  bottom: 5%;
+  background-color: var(--secondary-color);
+  left: 50%;
+  z-index: 2;
+  color: #ffffff;
+  text-decoration: none;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+}
+.swiper a::after {
+  content: "";
+  top: 50%;
+  left: 50%;
+  width: 0%;
+  position: absolute;
+  height: 00%;
+  transition: 0.5s;
+  background-color: var(--primary-color);
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+.swiper a:hover::after {
+  width: 110%;
+  height: 110%;
+} */
+@keyframes animacija {
+  0% {
+    width: 0;
+    left: 0;
+  }
+
+  40%,
+  70% {
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    left: 100%;
+    width: 0;
+  }
+}
+@keyframes opacity {
+  0% {
+    color: #ffffff00;
+  }
+  100% {
+    color: #ffffff;
+  }
+}
+@media (max-width: 700px) {
+  .swiper h1 {
+    min-width: 80vw !important;
+  }
+}
+@keyframes animation {
+  0% {
+    width: 15%;
+    top: -150%;
+  }
+
+  35% {
+    aspect-ratio: 1;
+  }
+  55% {
+    width: 15%;
+    top: 0%;
+  }
+  70% {
+    aspect-ratio: 3;
+    background-color: var(--primary-color);
+  }
+  80% {
+    top: 50%;
+    aspect-ratio: 2;
+    border-radius: 1rem;
+  }
+  100% {
+    top: 50%;
+    width: 105%;
+    aspect-ratio: 3;
+    border-radius: 1rem 0;
+    background-color: var(--primary-color);
+  }
+}

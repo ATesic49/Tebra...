@@ -6,6 +6,20 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  width: 100% !important  ;
+  --primary-color: #f42c04;
+  --secondary-color: #48e5c2;
+  --third-color: #f3d3bd;
+  --font-color-secondary: #5a5a5a;
+  --font-color-primary: #0f1a20;
+
+  /* --logo-color: #d71920; */
+  --font-size-small: clamp(10px, 1.4vw, 15px);
+  --font-size-mid: clamp(14px, 1.75vw, 18px);
+  --font-size-large: clamp(18px, 2.3vw, 25px);
+  --font-size-Xlarge: clamp(25px, 5vw, 55px);
+  --almost-white: #252525;
+  width: 100%;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,12 +30,18 @@
   }
 }
 
+* {
+  background-repeat: no-repeat;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  width: 100% !important;
+}
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  scroll-behavior: smooth;
+  width: 100% !important;
+  min-height: 100vh !important;
+  min-height: 100svh !important;
 }
