@@ -152,8 +152,8 @@
 }
 .swiperContainer{
   overflow: hidden;
-  /* background-color: var(--third-color);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
+  background-color: var(--third-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 .swiper{
   padding:2rem ;
