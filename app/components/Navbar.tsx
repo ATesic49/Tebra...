@@ -105,9 +105,9 @@ export default function Navbar() {
                 </>
               </div>
             </li>
-            <li>
+            {/* <li>
               <Link href="/asesoari">Asesoari</Link>
-            </li>
+            </li> */}
             <li>
               <Link href="/o-nama">O Nama</Link>
             </li>

@@ -45,3 +45,6 @@ body {
   min-height: 100vh !important;
   min-height: 100svh !important;
 }
+.swiper-pagination-bullet{
+  background-color: var(--third-color) !important;
+}

@@ -11,7 +11,7 @@
   text-align: center;
   font-size: var(--font-size-Xlarge);
   position: relative;
-  margin-block: 10vh;
+  margin-block: 10vh 2vh;
 }
 .izlog h1::after {
   position: absolute;
@@ -49,6 +49,27 @@
   margin: 1rem;
   text-align: center;
 }
+.grid .card > .slika {
+  display: grid;
+  grid-template-columns: 100% 100%;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+  transition: 0.5s;
+  scrollbar-width: 0;
+}
+/* .grid .card > .slika  input{
+
+} */
+/* .grid .card > .slika:hover {
+  transform: translateX(-100%);
+} */
+/* .grid .card > .slika:hover {
+  transform: translateX(-50%);
+} */
 .grid .card .naslov h2 {
   font-size: var(--font-size-mid);
   font-weight: 400;

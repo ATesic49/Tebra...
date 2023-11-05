@@ -1,0 +1,92 @@
+.searchBar {
+  display: grid;
+  grid-template-columns:auto;
+  grid-auto-flow: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1.5em;
+}
+
+.input {
+  margin-bottom: 5vh;
+  border: 2px solid transparent;
+  width: 28em;
+  height: 2.5em;
+  padding-left: 0.8em;
+  outline: none;
+  overflow: hidden;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  transition: all 0.5s;
+}
+
+.input:hover,
+.input:focus {
+  border: 2px solid var(--secondary-color);
+  box-shadow: 0px 0px 0px 7px rgb(71, 230, 195, 20%);
+  background-color: white;
+}
+
+.filter {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.192);
+  cursor: pointer;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.021);
+  transition: all 0.3s;
+}
+
+.filter svg {
+  height: 16px;
+  fill: rgb(77, 77, 77);
+  transition: all 0.3s;
+}
+.filter:hover {
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.11);
+  background-color: rgb(59, 59, 59);
+}
+.filter:hover svg {
+  fill: white;
+}
+
+
+
+.searchButton {
+  width: 7.5em;
+  height: 2.5em;
+  margin-left: -1em;
+  border-radius: 10px;
+  display: flex ;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #f42c044f;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px #f42c0438;
+  transition: all 0.3s;
+}
+
+
+
+
+.searchButton svg {
+  height: 16px;
+  fill: rgb(77, 77, 77);
+  transition: all 0.3s;
+}
+.searchButton:hover {
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.11);
+  background-color: rgb(59, 59, 59);
+}
+.searchButton:hover svg {
+  fill: white;
+}
+
+
+.searchButton:hover {
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.11);
+  background-color: #f42c04;
+}

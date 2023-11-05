@@ -82,7 +82,7 @@ export default function LogInModal({
             className={`${isOpen} max-w-md relative flex flex-col p-4 rounded-md text-black bg-white`}
           >
             <div className="text-2xl font-bold mb-2 text-[#1e0e4b] text-center">
-              Dobrodosao <span className="text-[#f42c04]">Tebra..</span>
+              Dobrodosao <span className="text-[#f42c04]">Tebra...</span>
             </div>
             <div className="text-sm font-normal mb-4 text-center text-[#1e0e4b]">
               Registruj Se
