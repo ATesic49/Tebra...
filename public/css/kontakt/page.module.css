@@ -1,3 +1,328 @@
-.kontakt{
-    padding-block: 10vh;
+.gore{
+    display: grid;
+    grid-template-areas: 'jedna';
+    place-items: center;
+}
+.image{
+    position: relative;
+    filter: brightness(.6);
+    width: 100%;
+    min-height: 80vh;
+    grid-area: jedna !important;
+}
+.image::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;    
+    left: 0;
+    background-color: var(--secondary-color);
+    opacity: .3;
+    z-index: 1;
+}
+.naslov{
+    grid-area: jedna !important;
+    z-index: 2;
+    /* background-color: var(--third-color); */
+    color:white;
+}
+.naslov h1{
+    filter:drop-shadow(3px 2px var(--third-color));
+    font-size: var(--font-size-Xlarge);
+}
+
+.naslov span{
+    color: var(--primary-color);
+    position: relative;
+
+}
+.naslov span::after{
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+.naslov span::before{
+    position: absolute;
+    content: '';
+    bottom: 0;
+    right: 0;
+    filter: drop-shadow(2px 2px 2px var(--third-color));
+    width: 50%;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.email .singup {
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: block;
+  font-weight: bold;
+    font-size: var(--font-size-large);
+
+  margin-top: 1.5em;
+}
+
+.email .card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 60vh;
+  flex-direction: column;
+  gap: 2em;
+  border-radius: 15px;
+  background: #e3e3e3;
+  box-shadow: 16px 16px 32px #c8c8c8,
+        -16px -16px 32px #fefefe;
+  border-radius: 8px;
+}
+
+.email .inputBox,
+.email .inputBox1 {
+  position: relative;
+  width: 80%;
+  height: 4em;
+}
+
+.email .inputBox input,
+.email .inputBox1 input {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border: none;
+  color: #000;
+  font-size: 1em;
+  background: transparent;
+  border-left: 2px solid #000;
+  border-bottom: 2px solid #000;
+  transition: 0.1s;
+  border-bottom-left-radius: 8px;
+}
+.email .inputBox textarea,
+.email .inputBox1 textarea {
+  width: 100%;
+  padding: 10px;
+  min-height: 5em;
+  outline: none;
+  border: none;
+  color: #000;
+  font-size: 1em;
+  background: transparent;
+  border-left: 2px solid #000;
+  border-bottom: 2px solid #000;
+  transition: 0.1s;
+  border-bottom-left-radius: 8px;
+}
+
+
+.email .inputBox span,
+.email .inputBox1 span {
+  margin-top: 5px;
+  position: absolute;
+  left: 0;
+  transform: translateY(-4px);
+  margin-left: 10px;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 12px;
+  color: #000;
+  text-transform: uppercase;
+  transition: 0.5s;
+  letter-spacing: 3px;
+  border-radius: 8px;
+}
+
+.email .inputBox input:valid~span,
+.email  .inputBox input:focus~span {
+  transform: translateX(2em) translateY(-20px);
+  font-size: 0.8em;
+  padding: 5px 10px;
+  background: var(--third-color);
+  letter-spacing: 0.2em;
+  color: #fff;
+  border: 2px;
+}
+.email .inputBox textarea:valid~span,
+.email  .inputBox textarea:focus~span {
+  transform: translateX(2em) translateY(-20px);
+  font-size: 0.8em;
+  padding: 5px 10px;
+  background: var(--third-color);
+  letter-spacing: 0.2em;
+  color: #fff;
+  border: 2px;
+}
+
+.email .inputBox1 input:valid~span,
+.email .inputBox1 input:focus~span {
+  transform: translateX(2em) translateY(-20px);
+  font-size: 0.8em;
+  padding: 5px 10px;
+  background: var(--third-color);
+  letter-spacing: 0.2em;
+  color: #fff;
+  border: 2px;
+}
+.email .inputBox1 textarea:valid~span,
+.email .inputBox1 textarea:focus~span {
+  transform: translateX(2em) translateY(-20px);
+  font-size: 0.8em;
+  padding: 5px 10px;
+  background: var(--third-color);
+  letter-spacing: 0.2em;
+  color: #fff;
+  border: 2px;
+}
+.email .inputBox input:valid,
+.email .inputBox input:focus,
+.email .inputBox1 input:valid,
+.email .inputBox1 input:focus {
+  border: 2px solid #000;
+  border-radius: 8px;
+}
+.email .inputBox textarea:valid,
+.email .inputBox textarea:focus,
+.email .inputBox1 textarea:valid,
+.email .inputBox1 textarea:focus {
+  border: 2px solid #000;
+  border-radius: 8px;
+}
+
+.email .enter {
+  height: 45px;
+  width: 100px;
+  border-radius: 5px;
+  border: 2px solid #000;
+  cursor: pointer;
+  background-color: transparent;
+  transition: 0.5s;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-bottom: 3em;
+}
+
+.enter:hover {
+  background-color:var(--secondary-color);
+    border: 2px solid var(--secondary-color);
+
+  color: white;
+}
+
+
+.tel{
+ 
+
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+  min-height: 60vh;
+  flex-direction: column;
+  gap: 2em;
+  border-radius: 15px;
+  background: var(--third-color);
+  box-shadow: 16px 16px 32px #c8c8c8,
+        -16px -16px 32px #fefefe;
+  border-radius: 8px;
+}
+.dole{
+    position: relative;
+    margin-block: 10vh;
+    display: grid;
+    grid-template-columns: 6fr 4fr;
+    transition: all .75s;
+}
+
+.tel h2{
+color: #000;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: block;
+  font-weight: bold;
+  font-size: var(--font-size-large);
+  margin-top: 1.5em;
+}
+.stvar{
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    background-color: #fff;
+    transition: .75s;
+    border: 2px solid var(--font-color-primary);
+    border-radius: 15px;
+    width: 3em;
+    aspect-ratio: 1;
+}
+.stvar:has(input:checked){
+    background-color: #000;
+}
+.stvar:has(input:checked) img{
+    filter: invert(1);
+    transform: rotate(-90deg);
+}
+.stvar img{
+    width: 50%;
+    transform: rotate(90deg);
+}
+.stvar input{
+    display: none;
+}
+.stvar label{
+    position: absolute;
+    cursor: pointer !important;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: 2;
+}
+.stvar:has(input:checked){
+    left:40%;
+}
+
+
+.dole:has(input:checked){
+    transition: .75s;
+
+}
+.email,
+.tel{
+    transition: .75s;
+}
+.dole:has(input:checked) .email{
+    transform: translateX(calc(200%/3));
+}
+.dole:has(input:checked) .tel{
+ transform: translate(-150%);
+}
+
+
+.tel a{
+    border: 2px solid black ;
+    padding: .2em 1em;
+    border-radius: 5px; 
+    transition: .5s;
+}
+.tel a:hover{
+    cursor: pointer;
+    border-color: var(--secondary-color) ;
+    color: white;
+    box-shadow:
+     0 0 2px #48e5c350,
+     0 0 10px #48e5c382 ;
+    background: var(--secondary-color);
 }
