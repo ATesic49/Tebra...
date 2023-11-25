@@ -1,6 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import styles from "../../public/css/logInModal.module.css";
+import axios from "axios";
+export interface user {
+  email: string,
+  hashedPassword: string,
+  adresa: String,
+  brtel: Number,
+  kupovine: String[]
+}
 export default function LogInModal({
   isOpen,
   setIsOpen,
@@ -9,11 +17,50 @@ export default function LogInModal({
   setIsOpen: React.Dispatch<React.SetStateAction<string>>;
 }) {
   const [logIn, setLogIn] = useState(true);
+  const [user, setUser] = useState<user>({
+    email: '',
+    hashedPassword: '',
+    adresa: '',
+    brtel: 0,
+    kupovine: []
+  })
+  const [status, setStatus] = useState('')
+  const postUser = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault()
+
+    if (validator()) {
+      const res = await axios.post('/api/auth', {
+        ...user
+      })
+      console.log(res)
+    }
+  }
+  const validator = () => {
+    if (user.email.length < 5) {
+      setStatus('Druze, email je inace duzi od 5 karaktera.')
+      return false
+    }
+    if (user.hashedPassword.length < 4) {
+      setStatus('Tebra, unesi normalnu sifru.')
+      return false
+    }
+    if (user.adresa.length < 4) {
+      setStatus('Minimalna duzina adrese je 4 karaktera')
+      return false
+    }
+    if (Number(user.brtel) < 1000000) {
+      setStatus('Mobilnog ne fiksnog!')
+      return false
+    }
+    return true
+  }
+
   return (
     <>
       <div className={styles.overlay} onClick={() => setIsOpen(styles.not)}>
         <span className={isOpen}></span>
       </div>
+
       {logIn ? (
         <div>
           <div
@@ -34,6 +81,7 @@ export default function LogInModal({
                   Email
                 </label>
                 <input
+                  onChange={(e) => setUser({ ...user, email: e.target.value })}
                   type="text"
                   id="email"
                   className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-offset-2  ring-gray-900 outline-0"
@@ -47,6 +95,8 @@ export default function LogInModal({
                   Password
                 </label>
                 <input
+                  onChange={(e) => setUser({ ...user, hashedPassword: e.target.value })}
+
                   type="text"
                   id="password"
                   className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-offset-2 ring-gray-900 outline-0"
@@ -86,6 +136,13 @@ export default function LogInModal({
             </div>
             <div className="text-sm font-normal mb-4 text-center text-[#1e0e4b]">
               Registruj Se
+              <br />
+              {status === 'Dobrodosao Tebra!' ? (<>
+                <div className="text-green-700"> {status}</div>
+              </>) : <>
+                <div className="text-red-700"> {status}</div>
+              </>}
+
             </div>
             <form className="flex flex-col gap-3">
               <div className="block relative">
@@ -96,8 +153,41 @@ export default function LogInModal({
                   Email
                 </label>
                 <input
+                  onChange={(e) => setUser({ ...user, email: e.target.value })}
+
                   type="text"
                   id="email"
+                  className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-offset-2  ring-gray-900 outline-0"
+                />
+              </div>
+
+              <div className="block relative">
+                <label
+                  htmlFor="adresa"
+                  className="block text-gray-600 cursor-text text-sm leading-[140%] font-normal mb-2"
+                >
+                  Adresa
+                </label>
+                <input
+                  onChange={(e) => setUser({ ...user, adresa: e.target.value })}
+
+                  type="text"
+                  id="adresa"
+                  className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-offset-2  ring-gray-900 outline-0"
+                />
+              </div>
+              <div className="block relative">
+                <label
+                  htmlFor="brTel"
+                  className="block text-gray-600 cursor-text text-sm leading-[140%] font-normal mb-2"
+                >
+                  Broj Telefona
+                </label>
+                <input
+                  onChange={(e) => setUser({ ...user, brtel: Number(e.target.value) })}
+
+                  type="text"
+                  id="brTel"
                   className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-offset-2  ring-gray-900 outline-0"
                 />
               </div>
@@ -109,13 +199,17 @@ export default function LogInModal({
                   Password
                 </label>
                 <input
-                  type="text"
+                  onChange={(e) => setUser({ ...user, hashedPassword: e.target.value })}
+
+                  type="password"
                   id="password"
                   className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-offset-2 ring-gray-900 outline-0"
                 />
               </div>
-
               <button
+                onClick={(e) => {
+                  postUser(e)
+                }}
                 type="submit"
                 className="bg-[#48e5c2] w-max m-auto px-6 py-2 rounded text-white text-sm font-normal"
               >

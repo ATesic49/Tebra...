@@ -1,0 +1,88 @@
+
+.container h2{
+    position: relative;
+    font-size: var(--font-size-Xlarge);
+    font-weight: 500;
+    text-align: center;
+    margin-block:1em;
+}
+.container h2::after{
+position: absolute;
+padding: 0;
+content: '';
+top: 0;
+left: -0vh;
+width: calc(100% + 0vh);
+height: 100%;
+background-color: var(--secondary-color );
+opacity: .2;
+}
+.customers{
+    overflow: visible;
+    z-index: 50 !important;
+    min-height: 10vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.customers .card{
+    cursor:default;
+    padding-inline: 2em;
+    grid-auto-columns: 1fr;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
+    padding-block: 2em;
+}
+/* .customers .card:nth-child(2){
+     transform: translateX(-.3em);
+    background-color: var(--font-color-secondary);
+} */
+.customers .card:hover{
+    transform: translate(-.2em,-.1em);
+    box-shadow: .2em .1em hsl(24, 69%, 75%);
+
+    background-color: var(--third-color);
+}
+
+ .image{
+    width: 30%; 
+    aspect-ratio: 1;
+    position: relative;
+}
+
+.image img{
+    transition: .5s;
+        /* filter:  drop-shadow(5px 1px var(--secondary-color)); */
+
+}
+.car .levo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.customers .levo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.customers h3{
+    color: var(--font-color-secondary);
+    font-size: var(--font-size-small);
+    text-align: center;
+}
+.customers strong{
+    font-size: var(--font-size-Xlarge);
+        filter:drop-shadow(3px 1.5px rgb(200, 153, 104))
+
+
+}
+
+
+
+

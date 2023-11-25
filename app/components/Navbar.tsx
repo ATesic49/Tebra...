@@ -7,7 +7,8 @@ import { usePathname } from "next/navigation";
 import styles from "../../public/css/navbar.module.css";
 import LogInModal from "./LogInModal";
 import styless from "../../public/css/logInModal.module.css";
-
+import axios from "axios";
+import { json } from "stream/consumers";
 const ubuntu = Ubuntu({
   subsets: ["latin"],
   weight: ["300", "400", "500", "700"],
@@ -15,6 +16,15 @@ const ubuntu = Ubuntu({
 });
 export const dynamic = "force-dynamic";
 
+interface majice {
+  id: number;
+  name: string;
+  created_at: Date;
+  updated_at: Date;
+  cena: number;
+  image: string;
+  backImage: string;
+}
 export default function Navbar() {
   const pathname = usePathname();
   const [upGallery, SetUpGallery] = useState(styles.down);
@@ -25,6 +35,14 @@ export default function Navbar() {
     SetUpGallery(styles.down);
     SetUpShop(styles.down);
   }, [pathname]);
+  let majice: majice[] = []
+  const fora = async () => {
+
+    const ma: majice[] = await axios.get('/api/getData')
+    return majice = ma
+  }
+  fora()
+
 
   return (
     <>
@@ -68,12 +86,18 @@ export default function Navbar() {
               ></Image>
               <div className={styles.menu}>
                 <>
+
                   <div className={styles.container}>
-                    <Link href="/fotelje" onClick={() => {}}>
+                    <Link href="/fotelje" onClick={() => { }}>
                       {" "}
                       <h4>Muska</h4>{" "}
                     </Link>
                     <ul>
+                      {majice.map(majica => {
+                        return (<> <li>
+                          <Link href={`/korpa/`}>{majica.name}</Link>
+                        </li> </>)
+                      })}
                       <li>
                         <Link href={`/dizajnerske-rucice/`}>Bela majica</Link>
                       </li>
@@ -86,7 +110,7 @@ export default function Navbar() {
                     </ul>
                   </div>
                   <div className={styles.container}>
-                    <Link href="/fotelje" onClick={() => {}}>
+                    <Link href="/fotelje" onClick={() => { }}>
                       {" "}
                       <h4>Zenska</h4>{" "}
                     </Link>
@@ -145,6 +169,10 @@ export default function Navbar() {
 
             <li>
               <Link href="/kontakt">Kontakt</Link>
+            </li>
+            <li>
+              <Link href="/korpa">Korpa</Link>
+
             </li>
           </ul>
         </nav>

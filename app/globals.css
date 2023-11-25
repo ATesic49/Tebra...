@@ -7,9 +7,9 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
   width: 100% !important  ;
-  --primary-color: #f42c04;
+  --primary-color: #d42704;
   --secondary-color: #48e5c2;
-  --third-color: #f3d3bd;
+  --third-color: hsl(24, 69%, 85%);
   --font-color-secondary: #5a5a5a;
   --font-color-primary: #0f1a20;
 
@@ -22,6 +22,12 @@
   width: 100%;
 }
 
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color:var(--font-color-primary);
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;

@@ -1,0 +1,58 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Majica{
+  id Int @id @default(autoincrement())
+  name String @unique
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  cena Int
+  image String
+  backImage String
+  velicina Velicina[]
+}
+
+model Velicina{
+  id Int @id @default(autoincrement())
+  name String 
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  majicaId Int 
+  majica Majica @relation(fields: [majicaId],references: [id])
+  boje Boje[]
+}
+
+
+model Boje{
+  id Int @id @default(autoincrement())
+  name String
+  created_at DateTime @default(now())
+  hex String
+  updated_at DateTime @updatedAt
+  stanje Int
+  velicine Velicina @relation(fields: [velicinaId],references: [id])
+  velicinaId Int
+
+
+}
+
+
+model user{
+  id Int @id @default(autoincrement())
+  email String @unique
+  adresa String
+  brtel Int
+  kupovine String[]
+  password String
+
+}

@@ -7,10 +7,15 @@ import 'swiper/css/effect-fade';
 // Import Swiper styles
 import "swiper/css";
 import 'swiper/css/pagination';
-import { EffectFade,Pagination } from "swiper/modules";
-export default function Slika() {
+import { EffectFade, Pagination } from "swiper/modules";
+
+interface Slike {
+  slika: String;
+  slikaBack: String
+}
+export default function Slika({ slika, slikaBack }: Slike) {
   return (
-    <Swiper loop={true}   effect={'fade'}  pagination={true} modules={[EffectFade,Pagination]} className={styles.slika}>
+    <Swiper loop={true} effect={'fade'} pagination={true} modules={[EffectFade, Pagination]} className={styles.slika}>
       {/* <input type="checkbox" id="checkbox" name="checkbox" />
             <label htmlFor="checkbox"></label> */}
       <SwiperSlide className={styles.image}>

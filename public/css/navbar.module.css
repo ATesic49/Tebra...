@@ -38,7 +38,7 @@
 }
 .nav nav ul li {
   z-index: 102;
-  padding: 0.25rem 2vh;
+  padding: 0.25rem 1em;
   list-style-type: none;
   min-width: max-content;
   display: flex;
@@ -57,11 +57,10 @@
 .nav nav ul li a {
   position: relative;
   cursor: default;
-  padding: 1vh;
+  padding: .5em;
   user-select: none;
   text-decoration: none;
   font-weight: 400;
-  color: var(--font-color-primary);
   font-size: var(--font-size-small);
 }
 .nav nav ul li a::before {
@@ -70,7 +69,7 @@
   user-select: none;
   left: 50%;
   width: 0%;
-  height: calc(var(--font-size-small) / 17.5);
+  height: calc(var(--font-size-small) / 27.5);
   content: "";
   background-color: var(--font-color-primary);
   transform: translate(-50%);
@@ -96,6 +95,7 @@
 .nav nav ul li .up {
   transform: rotateZ(-180deg);
   transition-property: transform;
+  color: white;
   transition: 0.5s ease-in-out;
 }
 .nav nav ul li .menu {
@@ -103,7 +103,7 @@
   content: "";
   background-color: var(--font-color-primary);
   top: -1000%;
-  padding: 5vh;
+  padding: 2em;
   left: -1000%;
   z-index: 100;
   opacity: 0;

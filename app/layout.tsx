@@ -1,7 +1,12 @@
+
 import type { Metadata } from "next";
 import { Inter, Nova_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import { createContext } from "vm";
+import { useState } from "react";
+import KorpaContext from "./context/KorpaContext";
 
 const inter = Nova_Mono({ subsets: ["latin"], weight: "400" });
 
@@ -15,12 +20,19 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
+
+
+
   return (
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
+        <KorpaContext>
 
-        {children}
+          {children}
+        </KorpaContext>
+        <Footer />
       </body>
     </html>
   );

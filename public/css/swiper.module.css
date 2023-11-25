@@ -1,9 +1,14 @@
 .swiper {
+
   width: 100%;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.swiper p{
+  color:white!important ;
+
 }
 .swiper img {
   width: 100%;
@@ -36,7 +41,7 @@
   background-color: var(--third-color);
   padding: 0.5rem 2rem;
   position: relative;
-  color: white;
+  color: white !important;
   overflow: hidden;
   z-index: 0;
   margin-right: 2rem;
@@ -68,7 +73,7 @@
 }
 .slide .text {
   font-size: var(--font-size-mid);
-  font-weight: 400;
+  font-weight: 600;
   color: white;
 }
 

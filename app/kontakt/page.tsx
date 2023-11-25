@@ -2,6 +2,7 @@ import React from 'react'
 import styles from '../../public/css/kontakt/page.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
+import Customers from './components/Customers'
 export default function page() {
   return (
     <div className={styles.kontakt}>
@@ -13,6 +14,8 @@ export default function page() {
         <div className={styles.naslov}> <h1>Budi i ti deo <span>tebra</span> tima!</h1></div>
 
       </div>
+      <Customers/>
+      <h2>Zelis da stupis u Kontakt sa nama?</h2>
       <div className={styles.dole}>
 
       <div className={styles.email}>
