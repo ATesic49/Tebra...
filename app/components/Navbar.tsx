@@ -178,7 +178,7 @@ export default function Navbar() {
             <button style={{ display: 'flex' }} onClick={() => {
               axios.get('/api/auth/logOut')
               setTimeout(() => {
-                router.push('/')
+                router.push('/?')
               }, 1500)
 
             }}>Izloguj se</button>
