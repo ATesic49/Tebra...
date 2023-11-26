@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import { createContext } from "vm";
 import { useState } from "react";
 import KorpaContext from "./context/KorpaContext";
+import UserContext from "./context/AuthContext";
 
 const inter = Nova_Mono({ subsets: ["latin"], weight: "400" });
 
@@ -27,11 +28,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar />
-        <KorpaContext>
+        <UserContext>
+          <Navbar />
 
-          {children}
-        </KorpaContext>
+          <KorpaContext>
+
+            {children}
+          </KorpaContext>
+        </UserContext>
         <Footer />
       </body>
     </html>

@@ -51,7 +51,7 @@ model user{
   id Int @id @default(autoincrement())
   email String @unique
   adresa String
-  brtel Int
+  brtel String
   kupovine String[]
   password String
 

@@ -2,13 +2,15 @@
 import { Ubuntu } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import React, { useContext, useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import styles from "../../public/css/navbar.module.css";
 import LogInModal from "./LogInModal";
 import styless from "../../public/css/logInModal.module.css";
 import axios from "axios";
 import { json } from "stream/consumers";
+import UserContext, { UserContexte } from "../context/AuthContext";
+import { cookies } from "next/headers";
 const ubuntu = Ubuntu({
   subsets: ["latin"],
   weight: ["300", "400", "500", "700"],
@@ -36,13 +38,8 @@ export default function Navbar() {
     SetUpShop(styles.down);
   }, [pathname]);
   let majice: majice[] = []
-  const fora = async () => {
-
-    const ma: majice[] = await axios.get('/api/getData')
-    return majice = ma
-  }
-  fora()
-
+  const isSingedIn = useContext(UserContexte)
+  const router = useRouter()
 
   return (
     <>
@@ -176,18 +173,31 @@ export default function Navbar() {
             </li>
           </ul>
         </nav>
-        <div className={styles.buttons}>
-          <Image
-            onClick={() => setIsopen(styless.yes)}
-            className={styles.avatar}
-            src={"/svgs/avatar.svg"}
-            width={25}
-            height={25}
-            alt="avatar"
-          ></Image>
-          <button>Log In</button>
-          <button>Sing Up</button>
-        </div>
+        {isSingedIn.user && isSingedIn.user.email ? <>
+          <div className={styles.buttons}>
+            <button style={{ display: 'flex' }} onClick={() => {
+              axios.get('/api/auth/logOut')
+              setTimeout(() => {
+                router.push('/')
+              }, 1500)
+
+            }}>Izloguj se</button>
+          </div>
+        </> : <>
+          <div className={styles.buttons}>
+            <Image
+              onClick={() => setIsopen(styless.yes)}
+              className={styles.avatar}
+              src={"/svgs/avatar.svg"}
+              width={25}
+              height={25}
+              alt="avatar"
+            ></Image>
+            <button>Log In</button>
+            <button>Sing Up</button>
+          </div>
+        </>}
+
         <div className={styles.logIn}>
           <h2>Uloguj se</h2>
           <label htmlFor="name">Korisničko Ime:</label>

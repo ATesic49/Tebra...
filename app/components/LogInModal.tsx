@@ -2,11 +2,12 @@
 import React, { useState } from "react";
 import styles from "../../public/css/logInModal.module.css";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 export interface user {
   email: string,
   hashedPassword: string,
   adresa: String,
-  brtel: Number,
+  brtel: String,
   kupovine: String[]
 }
 export default function LogInModal({
@@ -21,10 +22,11 @@ export default function LogInModal({
     email: '',
     hashedPassword: '',
     adresa: '',
-    brtel: 0,
+    brtel: '',
     kupovine: []
   })
   const [status, setStatus] = useState('')
+  const router = useRouter()
   const postUser = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
 
@@ -33,7 +35,12 @@ export default function LogInModal({
         ...user
       })
       console.log(res)
+      setStatus(res.data.message)
+      setTimeout(() => {
+        router.refresh()
+      }, 1500)
     }
+
   }
   const validator = () => {
     if (user.email.length < 5) {
@@ -48,7 +55,7 @@ export default function LogInModal({
       setStatus('Minimalna duzina adrese je 4 karaktera')
       return false
     }
-    if (Number(user.brtel) < 1000000) {
+    if (user.brtel.length < 4) {
       setStatus('Mobilnog ne fiksnog!')
       return false
     }
@@ -71,7 +78,13 @@ export default function LogInModal({
             </div>
             <div className="text-sm font-normal mb-4 text-center text-[#1e0e4b]">
               Uloguj se.
+
             </div>
+            {status === 'Dobrodosao Tebra!' ? (<>
+              <div className="text-green-700"> {status}</div>
+            </>) : <>
+              <div className="text-red-700"> {status}</div>
+            </>}
             <form className="flex flex-col gap-3">
               <div className="block relative">
                 <label
@@ -97,13 +110,25 @@ export default function LogInModal({
                 <input
                   onChange={(e) => setUser({ ...user, hashedPassword: e.target.value })}
 
-                  type="text"
+                  type="password"
                   id="password"
                   className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-offset-2 ring-gray-900 outline-0"
                 />
               </div>
               <div></div>
               <button
+                onClick={async (e) => {
+                  e.preventDefault()
+                  const res = await axios.post('/api/auth/logIn', {
+                    email: user.email,
+                    hashedPassword: user.hashedPassword
+                  })
+                  setStatus(res.data.message)
+                  setTimeout(() => {
+                    router.refresh()
+                  }, 1500)
+                }
+                }
                 type="submit"
                 className="bg-[#48e5c2] w-max m-auto px-6 py-2 rounded text-white text-sm font-normal"
               >
@@ -137,13 +162,13 @@ export default function LogInModal({
             <div className="text-sm font-normal mb-4 text-center text-[#1e0e4b]">
               Registruj Se
               <br />
-              {status === 'Dobrodosao Tebra!' ? (<>
-                <div className="text-green-700"> {status}</div>
-              </>) : <>
-                <div className="text-red-700"> {status}</div>
-              </>}
 
             </div>
+            {status === 'Dobrodosao Tebra!' ? (<>
+              <div className="text-green-700"> {status}</div>
+            </>) : <>
+              <div className="text-red-700"> {status}</div>
+            </>}
             <form className="flex flex-col gap-3">
               <div className="block relative">
                 <label
@@ -184,7 +209,7 @@ export default function LogInModal({
                   Broj Telefona
                 </label>
                 <input
-                  onChange={(e) => setUser({ ...user, brtel: Number(e.target.value) })}
+                  onChange={(e) => setUser({ ...user, brtel: e.target.value })}
 
                   type="text"
                   id="brTel"
